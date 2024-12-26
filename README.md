@@ -46,3 +46,27 @@ The solution first sorts the array to simplify finding triplets. It then iterate
 
 * **Auxiliary Space:** `O(1)` for the two-pointer technique.
 * **Result Storage:** `O(k)`, where `k` is the number of triplets found, which can be at most `O(n^2)`.
+
+## **Problem: Add Two Numbers**
+
+**Description:**
+You are given two non-empty **linked lists** representing two non-negative integers. The digits are stored in  **reverse order** , and each of their nodes contains a  **single digit** . Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number `0` itself.
+
+### **Approach:**
+
+We use a **dummy node** to simplify handling edge cases and initialize a **pointer (`current`)** to build the result list. A **carry** variable is used to handle sums greater than or equal to `10`.
+For each node in the two linked lists:
+
+1. Sum the digits of the current nodes along with the carry.
+2. Create a new node for the current digit (`total % 10`).
+3. Update the carry (`total // 10`).
+4. Move to the next nodes in both lists.
+
+### **Time Complexity:**
+
+* **O(max(m, n))** — where `m` and `n` are the lengths of the two linked lists.
+
+### **Space Complexity:**
+
+* **O(max(m, n))** — for storing the resulting linked list.

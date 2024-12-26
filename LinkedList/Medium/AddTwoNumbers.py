@@ -10,17 +10,7 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        """
-        Adds two non-empty linked lists representing two non-negative integers.
-        Digits are stored in reverse order, and each node contains a single digit.
         
-        Args:
-            l1 (ListNode): The head of the first linked list.
-            l2 (ListNode): The head of the second linked list.
-        
-        Returns:
-            ListNode: The head of the linked list representing the sum of the two numbers.
-        """
         # Create a dummy node to simplify edge cases and initialize pointers
         dummy = ListNode(0)
         current = dummy  # Pointer to build the result list

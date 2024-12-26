@@ -20,7 +20,6 @@ O(n) - where n is the length of the `nums` list.
 
 O(n) - due to the HashMap storing indices.
 
-
 ## Problem: 3Sum
 
 **Description:**
@@ -70,3 +69,37 @@ For each node in the two linked lists:
 ### **Space Complexity:**
 
 * **O(max(m, n))** — for storing the resulting linked list.
+
+## Problem: Target Sum
+
+**Description:**
+You are given an integer array `nums` and an integer `target`. You want to assign each integer in the array either a `'+'` or `'-'` sign such that the sum of the resulting expression equals the target.
+
+Return the **number of different expressions** that can be built to achieve the target sum.
+
+### **Approach:**
+
+The problem can be reduced to a  **Subset Sum Problem** :
+
+* Calculate the total sum of the array.
+* Check if dividing the array into two subsets (`subset1` and `subset2`) can satisfy the condition:
+  (total_sum+target)/2=subset1(total\_sum + target) / 2 = subset1**(**t**o**t**a**l**_**s**u**m**+**t**a**r**g**e**t**)**/2**=**s**u**b**se**t**1
+* Use a **Dynamic Programming** approach to count the subsets that sum up to `subset1`.
+
+**Key Steps:**
+
+1. Validate if the target is achievable.
+2. Transform the problem into a subset sum problem.
+3. Use a **1D Dynamic Programming array** to calculate the number of subsets with the target sum.
+
+---
+
+### **Time Complexity:**
+
+* O(n×target_sum)O(n \times target\_sum)**O**(**n**×**t**a**r**g**e**t**_**s**u**m**)**
+* Where `n` is the number of elements in `nums`.
+
+### **Space Complexity:**
+
+* O(target_sum)O(target\_sum)**O**(**t**a**r**g**e**t**_**s**u**m**)**
+* Using a 1D DP array to store intermediate results.

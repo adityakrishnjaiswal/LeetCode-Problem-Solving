@@ -103,3 +103,37 @@ The problem can be reduced to a  **Subset Sum Problem** :
 
 * O(target_sum)O(target\_sum)**O**(**t**a**r**g**e**t**_**s**u**m**)**
 * Using a 1D DP array to store intermediate results.
+
+## **Problem: Best Sightseeing Pair**
+
+**Description:**
+
+You are given an integer array `values` where `values[i]` represents the score of the `i-th` sightseeing spot. The score of a pair `(i, j)` is calculated as:
+
+values[i]+values[j]+i−jvalues[i] + values[j] + i - j**v**a**l**u**es**[**i**]**+**v**a**l**u**es**[**j**]**+**i**−**j**Return the **maximum score** of a sightseeing pair.
+
+**Constraints:**
+
+* `2 <= values.length <= 50,000`
+* `1 <= values[i] <= 1,000`
+
+### **Approach:**
+
+We can break down the formula:
+
+values[i]+values[j]+i−jvalues[i] + values[j] + i - j**v**a**l**u**es**[**i**]**+**v**a**l**u**es**[**j**]**+**i**−**j**into two parts:
+
+(values[i]+i)+(values[j]−j)(values[i] + i) + (values[j] - j)**(**v**a**l**u**es**[**i**]**+**i**)**+**(**v**a**l**u**es**[**j**]**−**j**)**1.  **Maximize `(values[i] + i)`** : Keep track of the maximum value of `values[i] + i` as we iterate.
+
+1. For every `j`, calculate the total score using the previously tracked maximum `(values[i] + i)` and `(values[j] - j)`.
+2. Update the maximum score during each iteration.
+
+This approach eliminates the need for a nested loop, achieving linear time complexity.
+
+### **Time Complexity:**
+
+* **O(n)** — We iterate through the list once, and each iteration performs constant-time operations.
+
+### **Space Complexity:**
+
+* **O(1)** — Only two variables (`max_score` and `max_i`) are used, regardless of input size.

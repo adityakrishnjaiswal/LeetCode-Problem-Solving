@@ -106,7 +106,7 @@ The problem can be reduced to a  **Subset Sum Problem** :
 
 ## **Problem: Best Sightseeing Pair**
 
-**Description:** 
+**Description:**
 
 You are given an integer array `values` where `values[i]` represents the score of the `i-th` sightseeing spot. The score of a pair `(i, j)` is calculated as:
 
@@ -138,7 +138,6 @@ This approach eliminates the need for a nested loop, achieving linear time compl
 
 * **O(1)** — Only two variables (`max_score` and `max_i`) are used, regardless of input size
 
-
 ## **Problem: Merge Sorted Array**
 
 ### **Description**
@@ -154,7 +153,7 @@ The task is to  **merge `nums2` into `nums1` in-place** , ensuring that the resu
 
 ---
 
-### **Approach**
+### **Approach:**
 
 1. **Initialize Pointers:**
    * Start from the end of both arrays to avoid overwriting valid data in `nums1`.
@@ -169,14 +168,14 @@ The task is to  **merge `nums2` into `nums1` in-place** , ensuring that the resu
 
 ---
 
-### **Time Complexity**
+### **Time Complexity:**
 
 * **O(m + n)**
   * Each comparison and assignment is performed at most `m + n` times.
 
 ---
 
-### **Space Complexity**
+### **Space Complexity:**
 
 * **O(1)**
   * The merging process is performed directly in `nums1` without requiring any extra space.
@@ -192,7 +191,7 @@ Consider the number of elements in `nums` which are not equal to `val` be `k`, t
 * Change the array `nums` such that the first `k` elements of `nums` contain the elements which are not equal to `val`. The remaining elements of `nums` are not important as well as the size of `nums`.
 * Return `k`.
 
-### Approach:
+### **Approach:**
 
 To correctly solve the problem of removing all occurrences of a given value from the list `nums` in-place, you can use the following approach:
 
@@ -207,3 +206,30 @@ To correctly solve the problem of removing all occurrences of a given value from
 ### **Space Complexity** :
 
 * **O(1)** : We are modifying the list in place and using a constant amount of extra space.
+
+## Problem: Remove Duplicates from Sorted Array
+
+**Description:**
+
+Given an integer array `nums` sorted in  **non-decreasing order** , remove the duplicates [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm) such that each unique element appears only  **once** . The **relative order** of the elements should be kept the  **same** . Then return *the number of unique elements in *`nums`.
+
+Consider the number of unique elements of `nums` to be `k`, to get accepted, you need to do the following things:
+
+* Change the array `nums` such that the first `k` elements of `nums` contain the unique elements in the order they were present in `nums` initially. The remaining elements of `nums` are not important as well as the size of `nums`.
+* Return `k`.
+
+### **Approach:**
+
+We can solve this problem by modifying the list in-place using the two-pointer technique. Here's the optimized approach:
+
+1. **Pointer `i`** to track the position of the last unique element.
+2. **Pointer `j`** to iterate through the list and compare the current element with the last unique element.
+3. If the element at `j` is different from the last unique element, move it to the next position in the list.
+
+### **Time Complexity** :
+
+* **O(n)** : We traverse the list once, where `n` is the length of the list `nums`.
+
+### **Space Complexity** :
+
+* **O(1)** : The solution modifies the list in-place and uses a constant amount of extra space.

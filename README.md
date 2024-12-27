@@ -136,4 +136,47 @@ This approach eliminates the need for a nested loop, achieving linear time compl
 
 ### **Space Complexity:**
 
-* **O(1)** — Only two variables (`max_score` and `max_i`) are used, regardless of input size.
+* **O(1)** — Only two variables (`max_score` and `max_i`) are used, regardless of input size
+
+
+## **Problem: Merge Sorted Array**
+
+### **Description**
+
+You are given two integer arrays `nums1` and `nums2`, sorted in  **non-decreasing order** , and two integers `m` and `n`:
+
+* `nums1` has a length of `m + n`:
+  * The first `m` elements are valid and sorted.
+  * The remaining `n` elements are set to `0` and should be ignored.
+* `nums2` has a length of `n` and contains `n` valid sorted integers.
+
+The task is to  **merge `nums2` into `nums1` in-place** , ensuring that the resulting array remains  **sorted in non-decreasing order** .
+
+---
+
+### **Approach**
+
+1. **Initialize Pointers:**
+   * Start from the end of both arrays to avoid overwriting valid data in `nums1`.
+   * Use three pointers: one for the last valid element in `nums1`, one for the last element in `nums2`, and one for the last position in the combined array.
+2. **Merge from the End:**
+   * Compare the elements from the end of `nums1` and `nums2`.
+   * Place the larger element at the end of `nums1`.
+   * Move the respective pointer and decrement the merge position.
+3. **Handle Remaining Elements in `nums2`:**
+   * If there are still elements left in `nums2`, copy them directly into `nums1`.
+   * Remaining elements in `nums1` are already in the correct place.
+
+---
+
+### **Time Complexity**
+
+* **O(m + n)**
+  * Each comparison and assignment is performed at most `m + n` times.
+
+---
+
+### **Space Complexity**
+
+* **O(1)**
+  * The merging process is performed directly in `nums1` without requiring any extra space.

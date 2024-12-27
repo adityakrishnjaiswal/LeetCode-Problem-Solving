@@ -106,7 +106,7 @@ The problem can be reduced to a  **Subset Sum Problem** :
 
 ## **Problem: Best Sightseeing Pair**
 
-**Description:**
+**Description:** 
 
 You are given an integer array `values` where `values[i]` represents the score of the `i-th` sightseeing spot. The score of a pair `(i, j)` is calculated as:
 
@@ -180,3 +180,30 @@ The task is to  **merge `nums2` into `nums1` in-place** , ensuring that the resu
 
 * **O(1)**
   * The merging process is performed directly in `nums1` without requiring any extra space.
+
+## Problem: Remove Element
+
+**Description:**
+
+Given an integer array `nums` and an integer `val`, remove all occurrences of `val` in `nums` [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm). The order of the elements may be changed. Then return *the number of elements in *`nums`* which are not equal to *`val`.
+
+Consider the number of elements in `nums` which are not equal to `val` be `k`, to get accepted, you need to do the following things:
+
+* Change the array `nums` such that the first `k` elements of `nums` contain the elements which are not equal to `val`. The remaining elements of `nums` are not important as well as the size of `nums`.
+* Return `k`.
+
+### Approach:
+
+To correctly solve the problem of removing all occurrences of a given value from the list `nums` in-place, you can use the following approach:
+
+1. **Iterate through the list** with a pointer, keeping track of the elements that do not match the target value `val`.
+2. **Shift non-matching elements** to the front of the array.
+3. **Return the length** of the modified list that contains no occurrences of `val`.
+
+### Time Complexity:
+
+* **O(n)** : We iterate through the list once, where `n` is the length of the list `nums`.
+
+### **Space Complexity** :
+
+* **O(1)** : We are modifying the list in place and using a constant amount of extra space.

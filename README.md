@@ -252,10 +252,36 @@ Return `k`* after placing the final result in the first *`k`* slots of *`nums`.
 * To enforce this, compare the current element `nums[i]` with the element `nums[j-2]` (ensuring it's valid) to check if we have already added it twice.
 * If the condition holds, add the current element to the result and increment `j`.
 
-## 🕒 **Time Complexity:**
+### **Time Complexity:**
 
 * O(n)O(n)**O**(**n**) — We iterate through the array once.
 
-## 📦 **Space Complexity:**
+### **Space Complexity:**
 
 * O(1)O(1)**O**(**1**) — We modify the array in place without using extra space.
+
+## **Problem: Majority Element**
+
+**Description:**
+
+Given an array `nums` of size `n`, return the  **majority element** .
+The **majority element** is the element that appears  **more than ⌊n / 2⌋ times** .
+You can assume that the array always contains a majority element.
+
+### Approach:
+
+* **Candidate Selection:**
+  * Use a `candidate` variable to store a potential majority element.
+  * Use a `count` variable to track balance.
+  * Increment `count` if the current number matches `candidate`, else decrement.
+  * If `count` is `0`, select a new candidate.
+* **Return Candidate:**
+  * Since a majority element is guaranteed, return the final `candidate`.
+
+### Time Complexity:
+
+**O**(**n**) — Single pass through the array.
+
+### Space Complexity:
+
+**O**(**1**) — Only two variables are used.

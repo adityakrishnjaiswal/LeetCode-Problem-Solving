@@ -285,3 +285,29 @@ You can assume that the array always contains a majority element.
 ### Space Complexity:
 
 **O**(**1**) — Only two variables are used.
+
+## **Problem: Rotate Array**
+
+**Description:**
+
+Given an integer array `nums`, rotate the array to the right by `k` steps, where `k` is non-negative.
+
+### **Approach:**
+
+* **Normalize `k`:**
+  * Since rotating the array by its length `n` doesn't change the array, reduce `k` to `k % n` (i.e., `k = k % len(nums)`).
+    This ensures that we handle cases where `k` is greater than `n` (the length of the array).
+* **Reverse the Entire Array:**
+  * Reverse the entire array first. This ensures that the elements at the end of the array are moved towards the front.
+* **Reverse the First `k` Elements:**
+  * After reversing the entire array, the last `k` elements are in the front. We reverse just the first `k` elements to restore their correct order.
+* **Reverse the Remaining `n - k` Elements:**
+  * Finally, reverse the remaining `n - k` elements to restore their correct order.
+
+### **Time Complexity:**
+
+* O(n)O(n)**O**(**n**) — Each element is reversed a constant number of times.
+
+### **Space Complexity:**
+
+* O(1)O(1)**O**(**1**) — In-place rotation with no extra space.

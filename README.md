@@ -233,3 +233,29 @@ We can solve this problem by modifying the list in-place using the two-pointer t
 ### **Space Complexity** :
 
 * **O(1)** : The solution modifies the list in-place and uses a constant amount of extra space.
+
+## Problem: Remove Duplicates from Sorted Array II
+
+**Description:**
+
+Given an integer array `nums` sorted in  **non-decreasing order** , remove some duplicates [**in-place**](https://en.wikipedia.org/wiki/In-place_algorithm) such that each unique element appears  **at most twice** . The **relative order** of the elements should be kept the  **same** .
+
+Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the **first part** of the array `nums`. More formally, if there are `k` elements after removing the duplicates, then the first `k` elements of `nums` should hold the final result. It does not matter what you leave beyond the first `k` elements.
+
+Return `k`* after placing the final result in the first *`k`* slots of *`nums`.
+
+### **Approach:**
+
+* Use a pointer `i` to iterate through the array.
+* Use another pointer `j` to keep track of the position where the next valid element should be placed.
+* Allow each unique element to appear  **at most twice** .
+* To enforce this, compare the current element `nums[i]` with the element `nums[j-2]` (ensuring it's valid) to check if we have already added it twice.
+* If the condition holds, add the current element to the result and increment `j`.
+
+## 🕒 **Time Complexity:**
+
+* O(n)O(n)**O**(**n**) — We iterate through the array once.
+
+## 📦 **Space Complexity:**
+
+* O(1)O(1)**O**(**1**) — We modify the array in place without using extra space.

@@ -311,3 +311,62 @@ Given an integer array `nums`, rotate the array to the right by `k` steps, where
 ### **Space Complexity:**
 
 * O(1)O(1)**O**(**1**) — In-place rotation with no extra space.
+
+## Problem: Number of Ways to Form a Target String Given a Dictionary
+
+**Description:**
+
+You are given a list of strings of the **same length** `words` and a string `target`.
+
+Your task is to form `target` using the given `words` under the following rules:
+
+* `target` should be formed from left to right.
+* To form the `i<sup>th</sup>` character ( **0-indexed** ) of `target`, you can choose the `k<sup>th</sup>` character of the `j<sup>th</sup>` string in `words` if `target[i] = words[j][k]`.
+* Once you use the `k<sup>th</sup>` character of the `j<sup>th</sup>` string of `words`, you **can no longer** use the `x<sup>th</sup>` character of any string in `words` where `x <= k`. In other words, all characters to the left of or at index `k` become unusuable for every string.
+* Repeat the process until you form the string `target`.
+
+**Notice** that you can use **multiple characters** from the **same string** in `words` provided the conditions above are met.
+
+Return  *the number of ways to form `target` from `words`* . Since the answer may be too large, return it **modulo** `10<sup>9</sup> + 7`.
+
+### Approach:
+
+* **Frequency Map Preprocessing:**
+  * Build a **frequency table** (`freq`) to count how many times each character appears at each column across all strings in `words`.
+  * This allows quick lookup for the number of ways a character in `target` can be formed from each column.
+* **Dynamic Programming with Memoization:**
+  * Use a **recursive DP function** (`dp(i, j)`) where:
+    * `i`: The current index in the `target` string.
+    * `j`: The current column in `words`.
+  * The DP function considers two choices at every step:
+    1. **Skip the current column (`j`)** and move to the next column (`j+1`).
+    2. **Use the current column (`j`)** if it contains the required character (`target[i]`) and then move to the next character in `target` (`i+1`) and the next column (`j+1`).
+* **Base Cases:**
+  * If `i == len(target)`: Successfully formed the `target` → Return `1`.
+  * If `j == len(words[0])`: Ran out of columns → Return `0`.
+* **Recursive Transition:**
+  * If `target[i]` exists in column `j`:
+    dp(i,j)=dp(i,j+1)+freq[j][target[i]]×dp(i+1,j+1)dp(i, j) = dp(i, j+1) + freq[j][target[i]] \times dp(i+1, j+1)**d**p**(**i**,**j**)**=**d**p**(**i**,**j**+**1**)**+**f**re**q**[**j**]**[**t**a**r**g**e**t**[**i**]]**×**d**p**(**i**+**1**,**j**+**1**)
+  * Use **Memoization** to avoid recalculating overlapping subproblems.
+* **Modulo Operation:**
+  * Since the result can be very large, take every intermediate result modulo 109+710^9 + 7**1**0**9**+**7**.
+* **Final Answer:**
+  * The answer is given by `dp(0, 0)`
+
+### Time Complexity:
+
+O(m×n+n×t)O(m \times n + n \times t)**O**(**m**×**n**+**n**×**t**)* `m × n`: Frequency table construction
+
+* `n × t`: DP recursion with memoization
+
+If `m` is much larger than `t`, the preprocessing step dominates.
+
+**Final Time Complexity:** O(m×n+n×t)O(m \times n + n \times t)**O**(**m**×**n**+**n**×**t**)
+
+### Space Complexity:
+
+**O**(**n**×**26**+**t**×**n**+**t**+**n**)Simplified:
+
+O(n×t+n+t)O(n \times t + n + t)**O**(**n**×**t**+**n**+**t**)For large inputs, the dominant term is O(n×t)O(n \times t)**O**(**n**×**t**).
+
+**Final Space Complexity:** O(n×t)O(n \times t)**O**(**n**×**t**)

@@ -371,7 +371,6 @@ O(n×t+n+t)O(n \times t + n + t)**O**(**n**×**t**+**n**+**t**)For large inputs,
 
 **Final Space Complexity:** O(n×t)O(n \times t)**O**(**n**×**t**)
 
-
 ## **Problem: Best Time to Buy and Sell Stock**
 
 **Description:**
@@ -398,3 +397,33 @@ We use a **single pass loop** to keep track of:
 
 * **O(1)**
   We only use two variables (`min_price` and `max_profit`) regardless of the input size.
+
+## **Problem: Best Time to Buy and Sell Stock**
+
+**Description:**
+
+You are given an array `prices` where `prices[i]` represents the price of a given stock on the `i-th` day.
+
+You want to maximize your profit by choosing **a single day to buy one stock** and  **a different day in the future to sell that stock** .
+
+Return **the maximum profit** you can achieve from this transaction. If you cannot achieve any profit, return `0`.
+
+### **Approach:**
+
+We use a **single-pass loop** to keep track of:
+
+1. The **minimum price encountered so far** (`min_price`) to simulate the best buying opportunity.
+2. The **maximum profit** (`max_profit`) we can achieve if we sell on the current day.
+
+At each step:
+
+* Update `min_price` if the current price is lower.
+* Calculate the profit if sold on the current day (`current_price - min_price`) and update `max_profit` if it's larger.
+
+### **Time Complexity:**
+
+* **O(n)** → We iterate through the array once.
+
+### **Space Complexity:**
+
+* **O(1)** → Only two variables (`min_price` and `max_profit`) are used.

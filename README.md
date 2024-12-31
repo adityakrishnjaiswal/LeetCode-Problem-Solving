@@ -427,3 +427,42 @@ At each step:
 ### **Space Complexity:**
 
 * **O(1)** → Only two variables (`min_price` and `max_profit`) are used.
+
+## **Problem: Minimum Cost for Train Tickets**
+
+**Description:**
+
+You are given an integer array `days`, where each element represents a day of the year (from  **1 to 365** ) that you plan to travel. Train tickets are available in three options:
+
+1. **1-day pass:** Costs `costs[0]` dollars and covers 1 day of travel.
+2. **7-day pass:** Costs `costs[1]` dollars and covers 7 consecutive days of travel.
+3. **30-day pass:** Costs `costs[2]` dollars and covers 30 consecutive days of travel.
+
+The passes allow travel for the corresponding number of consecutive days starting from the day of purchase.
+
+**Objective:**
+Return the **minimum cost** required to travel on all the days given in the array `days`.
+
+### **Approach:**
+
+We use **Dynamic Programming (DP)** to solve this problem efficiently.
+
+1. **Define a DP Array:**
+   * `dp[i]` represents the **minimum cost** of traveling from day `i` to the end of the `days` array.
+2. **Iterate Backward:**
+   * Start from the last travel day and move backward.
+   * For each day, consider purchasing each of the 1-day, 7-day, and 30-day passes.
+   * Use a pointer `j` to find the next valid day after the current pass expires.
+   * Update `dp[i]` with the **minimum cost** from the three options.
+3. **Transition Formula:**
+   dp[i]=min⁡(dp[j]+cost)dp[i] = \min(dp[j] + cost) **d**p**[**i**]**=**min**(**d**p**[**j**]**+**cos**t**)**where `j` represents the next index after the pass expires.
+4. **Base Case:**
+   * Beyond the last day of travel, the cost is `0`.
+
+### **Time Complexity:**
+
+* **O(n * 3)** → For each day, we evaluate three pass options (1-day, 7-day, and 30-day).
+
+### **Space Complexity:**
+
+* **O(n)** → We use a `dp` array of size `n+1` where `n` is the number of travel days.

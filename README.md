@@ -501,3 +501,44 @@ current_score=left_zeros+right_ones\text{current\_score} = \text{left\_zeros} + 
 ### **Space Complexity:**
 
 * **O(1)** → We use a few counters (`left_zeros`, `right_ones`, `max_score`) without additional data structures.
+
+
+## **Problem: Best Time to Buy and Sell Stock II (Using Dynamic Programming)**
+
+**Description:**
+
+You are given an integer array `prices`, where `prices[i]` represents the  **price of a stock on the i-th day** .
+
+* You can **buy and/or sell the stock** on any day.
+* You can only **hold at most one share** of the stock at any given time.
+* You are  **allowed to buy and sell on the same day** .
+
+**Objective:**
+Return the **maximum profit** you can achieve by choosing to buy and/or sell the stock on given days using  **Dynamic Programming (DP)** .
+
+### **Approach:**
+
+We use **Dynamic Programming (DP)** to track two states:
+
+1. **Hold State (`dp[i][0]`)**
+   * Either you **buy** the stock today, or you **keep holding** from yesterday.
+
+dp[i][0]=max⁡(dp[i−1][0],dp[i−1][1]−prices[i])dp[i][0] = \max(dp[i-1][0], dp[i-1][1] - prices[i])
+
+* Either you **sell** the stock today, or you **do nothing** and continue not holding a stock.
+
+dp[i][1]=max⁡(dp[i−1][1],dp[i−1][0]+prices[i])dp[i][1] = \max(dp[i-1][1], dp[i-1][0] + prices[i])
+
+* On  **Day 0** , if you're **holding** a stock: `dp[0][0] = -prices[0]`
+* If you're **not holding** a stock: `dp[0][1] = 0`
+
+3. The final answer will be in `dp[n-1][1]`, where `n` is the number of days.
+4. The final answer will be in `dp[n-1][1]`, where `n` is the number of days.
+
+### **Time Complexity:**
+
+* **O(n)** → We loop through the prices array once.
+
+### **Space Complexity:**
+
+* **O(1)** (Optimized version) → Only two variables are used (`hold` and `no_hold`).

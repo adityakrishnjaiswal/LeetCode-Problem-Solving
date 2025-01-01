@@ -466,3 +466,38 @@ We use **Dynamic Programming (DP)** to solve this problem efficiently.
 ### **Space Complexity:**
 
 * **O(n)** → We use a `dp` array of size `n+1` where `n` is the number of travel days.
+
+## Problem: Maximum Score After Splitting a String
+
+**Description:**
+
+Given a string `s` of zeros and ones, *return the maximum score after splitting the string into two **non-empty** substrings* (i.e. **left** substring and **right** substring).
+
+The score after splitting a string is the number of **zeros** in the **left** substring plus the number of **ones** in the **right** substring.
+
+### Approach:
+
+We iterate through the string and evaluate each **valid split point** to calculate the score:
+
+1. **Initialize Counts:**
+   * Count the **total number of '1's** in the string (`total_ones`).
+   * Use a variable `left_zeros` to track **'0's** in the  **left substring** .
+   * Use a variable `right_ones` initialized to `total_ones` to track **'1's** in the  **right substring** .
+2. **Iterate Through the String:**
+   * For every valid split point (`i` from `0` to `len(s) - 2`):
+     * If the character is `'0'`, increment `left_zeros`.
+     * If the character is `'1'`, decrement `right_ones`.
+     * Calculate the  **current split score** :
+
+current_score=left_zeros+right_ones\text{current\_score} = \text{left\_zeros} + \text{right\_ones}**current_score**=**left_zeros**+**right_ones*** Update the `max_score` if `current_score` is greater than the previous maximum.
+
+3. **Return Maximum Score:**
+   After evaluating all valid splits, return the maximum score.
+
+### **Time Complexity:**
+
+* **O(n)** → We iterate through the string once and calculate scores at each valid split.
+
+### **Space Complexity:**
+
+* **O(1)** → We use a few counters (`left_zeros`, `right_ones`, `max_score`) without additional data structures.

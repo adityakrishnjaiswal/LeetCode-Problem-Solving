@@ -542,3 +542,45 @@ dp[i][1]=max⁡(dp[i−1][1],dp[i−1][0]+prices[i])dp[i][1] = \max(dp[i-1][1], 
 ### **Space Complexity:**
 
 * **O(1)** (Optimized version) → Only two variables are used (`hold` and `no_hold`).
+
+## **Problem: Jump Game**
+
+**Description:**
+
+You are given an integer array `nums`, where `nums[i]` represents the **maximum number of steps** you can jump forward from the `i-th` index.
+
+* You start at  **index 0** .
+* Your goal is to **reach the last index** of the array.
+
+**Objective:**
+Return `True` if you can reach the last index, otherwise return `False`.
+
+### **Approach:** 
+
+**Intuition:**
+
+The key is to track the **farthest index** you can reach as you iterate through the array. If at any point the current index exceeds the farthest reachable index, you cannot proceed further.
+
+**Algorithm Steps:**
+
+1. **Initialize** `farthest = 0` to track the farthest reachable index.
+2. Loop through each index `i` in `nums`:
+   * If `i > farthest`, return `False` (you cannot proceed).
+   * Update `farthest = max(farthest, i + nums[i])`.
+3. If the loop completes, return `True`.
+
+**State Transition:**
+
+* At each index `i`:
+
+farthest=max⁡(farthest,i+nums[i])farthest = \max(farthest, i + nums[i])
+
+ If `i > farthest`: return `False`
+
+### **Time Complexity:**
+
+* **O(n)** → The loop iterates through the array once.
+
+### **Space Complexity:**
+
+* **O(1)** → No additional space is used.

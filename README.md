@@ -502,7 +502,6 @@ current_score=left_zeros+right_ones\text{current\_score} = \text{left\_zeros} + 
 
 * **O(1)** → We use a few counters (`left_zeros`, `right_ones`, `max_score`) without additional data structures.
 
-
 ## **Problem: Best Time to Buy and Sell Stock II (Using Dynamic Programming)**
 
 **Description:**
@@ -555,7 +554,7 @@ You are given an integer array `nums`, where `nums[i]` represents the **maximum 
 **Objective:**
 Return `True` if you can reach the last index, otherwise return `False`.
 
-### **Approach:** 
+### **Approach:**
 
 **Intuition:**
 
@@ -584,3 +583,32 @@ farthest=max⁡(farthest,i+nums[i])farthest = \max(farthest, i + nums[i])
 ### **Space Complexity:**
 
 * **O(1)** → No additional space is used.
+
+## Count Vowel Strings in Ranges
+
+**Description:**
+
+You are given a **0-indexed** array of strings `words` and a 2D array of integers `queries`.
+
+Each query `queries[i] = [l<sub>i</sub>, r<sub>i</sub>]` asks us to find the number of strings present in the range `l<sub>i</sub>` to `r<sub>i</sub>` (both  **inclusive** ) of `words` that start and end with a vowel.
+
+Return *an array *`ans`* of size *`queries.length`*, where *`ans[i]`* is the answer to the *`i`^th^ * query* .
+
+**Note** that the vowel letters are `'a'`, `'e'`, `'i'`, `'o'`, and `'u'`.
+
+### Approach:
+
+**Intuition:**
+
+Instead of checking the range `[li, ri]` repeatedly for each query, we can **precompute** the counts using a  **prefix sum array** .
+
+* Each prefix sum will store the count of valid strings up to that index.
+* For each query, we can quickly determine the count by subtracting prefix sums.
+
+### **Time Complexity:**
+
+* **O(n + q)** → `n` for building the prefix sum array and `q` for processing queries.
+
+### **Space Complexity:**
+
+* **O(n)** → For the prefix sum array.

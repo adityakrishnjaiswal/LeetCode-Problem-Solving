@@ -646,3 +646,77 @@ We can efficiently solve the problem using the  **Prefix Sum Technique** :
 ### **Space Complexity**
 
 * **O(1)** — Only a few integer variables (`prefix_sum`, `right_sum`, `valid_split_count`) are used, regardless of the input size.
+
+## Problem: Jump Game II
+
+**Description:**
+
+You are given a **0-indexed** array of integers `nums` of length `n`. You are initially positioned at `nums[0]`.
+
+Each element `nums[i]` represents the maximum length of a forward jump from index `i`. In other words, if you are at `nums[i]`, you can jump to any `nums[i + j]` where:
+
+* `0 <= j <= nums[i]` and
+* `i + j < n`
+
+Return *the minimum number of jumps to reach *`nums[n - 1]`. The test cases are generated such that you can reach `nums[n - 1]`.
+
+### Approach:
+
+#### Dynamic Programming:
+
+1. Start at index `0`.
+2. For each index `i`:
+
+   * Check all previous indices (`j`) where `j + nums[j] >= i`.
+   * Update `dp[i]` as:
+
+   dp[i]=min⁡(dp[i],dp[j]+1)dp[i] = \min(dp[i], dp[j] + 1)**d**p**[**i**]**=**min**(**d**p**[**i**]**,**d**p**[**j**]**+**1**)
+3. The value at `dp[n-1]` will give the **minimum jumps** needed to reach the last index.
+
+**Steps:**
+
+1. **Initialize a DP array:**
+   * Set `dp[0] = 0` (no jumps needed at the start).
+   * Set all other indices to infinity (`float('inf')`).
+2. **Iterate through the array:**
+   * For each `i` (from `1` to `n-1`), check all previous indices (`j`) that can jump to `i`.
+   * Update `dp[i]` with the minimum jumps.
+3. **Return `dp[n-1]`:** The minimum jumps to reach the last index.
+
+#### Greedy:
+
+At every position:
+
+1. **Maximize your reach:** Keep track of the **farthest index** you can jump to.
+2. **Track your current range:** When you reach the  **end of the current jump range** , increment your jump count and extend your range to the  **farthest reachable index** .
+
+**Steps:**
+
+1. Start at index `0`.
+2. Use two variables:
+   * `current_reach`: The farthest point you can reach with the  **current jump** .
+   * `next_reach`: The farthest point you can potentially reach with the  **next jump** .
+3. Iterate through the array:
+   * Update `next_reach` at every step.
+   * If you reach the `current_reach`, increment the jump count and update `current_reach` to `next_reach`.
+4. Stop when you reach or exceed the last index.
+
+### Time Complexity:
+
+#### Dynamic Programming:
+
+* **O(n2**)**For each index `i`, we check all previous indices (`j`) to find the minimum jumps.
+
+#### Greedy:
+
+* **O**(**n**) We iterate through the array once, and each index is processed in constant time.
+
+### Space Complexity:
+
+#### Dynamic Programming:
+
+* **O(1)**The `dp` array stores the minimum jumps for each index.
+
+#### Greedy:
+
+* **O**(**1**) Only a few integer variables are used (`jumps`, `current_reach`, `next_reach`).

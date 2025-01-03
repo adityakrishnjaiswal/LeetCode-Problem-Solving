@@ -612,3 +612,37 @@ Instead of checking the range `[li, ri]` repeatedly for each query, we can **pre
 ### **Space Complexity:**
 
 * **O(n)** → For the prefix sum array.
+
+## Problem: Number of Ways to Split Array
+
+**Description:**
+
+You are given a **0-indexed** integer array `nums` of length `n`.
+
+`nums` contains a **valid split** at index `i` if the following are true:
+
+* The sum of the first `i + 1` elements is **greater than or equal to** the sum of the last `n - i - 1` elements.
+* There is **at least one** element to the right of `i`. That is, `0 <= i < n - 1`.
+
+Return *the number of **valid splits** in* `nums`.
+
+### Approach:
+
+We can efficiently solve the problem using the  **Prefix Sum Technique** :
+
+1. **Calculate the Total Sum:** Compute the total sum of the array.
+2. **Iterate Through the Array:** Loop through the array (excluding the last element) while maintaining a  **prefix sum** .
+3. **Calculate Right Sum:**
+   Right Sum=Total Sum−Prefix Sum\text{Right Sum} = \text{Total Sum} - \text{Prefix Sum}**Right Sum**=**Total Sum**−**Prefix Sum**
+4. **Check Validity:** Compare `Prefix Sum` and `Right Sum`. If:
+   Prefix Sum≥Right Sum\text{Prefix Sum} \geq \text{Right Sum}**Prefix Sum**≥**Right Sum**
+   Then increment the valid split counter.
+5. **Return the Counter:** After the loop, return the total count of valid splits.
+
+### **Time Complexity**
+
+* **O(n)** — We iterate through the array once, performing constant-time calculations during each iteration.
+
+### **Space Complexity**
+
+* **O(1)** — Only a few integer variables (`prefix_sum`, `right_sum`, `valid_split_count`) are used, regardless of the input size.

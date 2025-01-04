@@ -747,3 +747,33 @@ To count the number of unique palindromic subsequences of length three in a stri
 
 * The set of middle characters uses up to O(n)O(n)**O**(**n**) space in the worst case.
 * Overall: O(n)O(n)**O**(**n**)
+
+## Problem: H-Index
+
+**Description:**
+
+Given an array of integers `citations` where `citations[i]` is the number of citations a researcher received for their `i<sup>th</sup>` paper, return  *the researcher's h-index* .
+
+According to the [definition of h-index on Wikipedia](https://en.wikipedia.org/wiki/H-index): The h-index is defined as the maximum value of `h` such that the given researcher has published at least `h` papers that have each been cited at least `h` times.
+
+### Approach:
+
+1. **Understand the Problem:**
+   * We want the **maximum value of `h`** such that there are **at least `h` papers** with  **`h` or more citations** .
+2. **Sort the Array:**
+   * Sort the array in  **descending order** .
+   * This makes it easier to count how many papers have at least `h` citations.
+3. **Iterate and Compare:**
+   * Iterate through the sorted array.
+   * For each paper, check if its citation count is greater than or equal to its index (1-based).
+   * Keep track of the maximum valid `h`.
+4. **Stop When the Condition Fails:**
+   * As soon as a paper’s citation count is less than its index, stop and return the last valid `h`.
+
+### Time Complexity:
+
+* **O**(**n**log**n**) → Sorting the array dominates the complexity.
+
+### Space Complexity:
+
+* **O**(**1**) → No extra space used apart from variables.

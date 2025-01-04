@@ -720,3 +720,30 @@ At every position:
 #### Greedy:
 
 * **O**(**1**) Only a few integer variables are used (`jumps`, `current_reach`, `next_reach`).
+
+## Problem: Unique Length-3 Palindromic Subsequences
+
+Description: 
+
+Given a string `s`, return *the number of **unique palindromes of length three** that are a **subsequence** of *`s`.
+
+Note that even if there are multiple ways to obtain the same subsequence, it is still only counted  **once** .
+
+A **palindrome** is a string that reads the same forwards and backwards.
+
+A **subsequence** of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+
+### Approach:
+
+To count the number of unique palindromic subsequences of length three in a string, we focus on identifying subsequences with the structure `aXa`, where the first and last characters are the same, and the middle character can be any character. The approach starts by iterating through each **unique character** in the string, treating it as the outer character (`a`) of the palindrome. For each character, we locate its **first** and **last occurrences** using string functions like `find()` and `rfind()`. If a valid range exists (i.e., the first index is less than the last index), we extract the **substring between these two positions** and collect all unique middle characters using a  **set** . The size of this set represents the number of unique palindromes that can be formed with the current character as the outer pair. We repeat this process for all unique characters and sum up the counts to get the final result. This approach efficiently avoids redundant checks by focusing only on unique characters and leverages set operations to ensure uniqueness, resulting in an optimized and clear solution.
+
+### Time Complexity:
+
+* There are at most **26 unique characters** (`a-z`).
+* For each character, substring extraction and set creation are O(n)O(n)**O**(**n**).
+* Overall: O(26⋅n)→O(n)O(26 \cdot n) → O(n)**O**(**26**⋅**n**)**→**O**(**n**)**
+
+### Space Complexity:
+
+* The set of middle characters uses up to O(n)O(n)**O**(**n**) space in the worst case.
+* Overall: O(n)O(n)**O**(**n**)

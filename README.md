@@ -723,7 +723,7 @@ At every position:
 
 ## Problem: Unique Length-3 Palindromic Subsequences
 
-Description: 
+Description:
 
 Given a string `s`, return *the number of **unique palindromes of length three** that are a **subsequence** of *`s`.
 
@@ -777,3 +777,42 @@ According to the [definition of h-index on Wikipedia](https://en.wikipedia.org/w
 ### Space Complexity:
 
 * **O**(**1**) → No extra space used apart from variables.
+
+## Problem: Shifting Letters II
+
+**Description:**
+
+You are given a string `s` of lowercase English letters and a 2D integer array `shifts` where `shifts[i] = [start<sub>i</sub>, end<sub>i</sub>, direction<sub>i</sub>]`. For every `i`, **shift** the characters in `s` from the index `start<sub>i</sub>` to the index `end<sub>i</sub>` ( **inclusive** ) forward if `direction<sub>i</sub> = 1`, or shift the characters backward if `direction<sub>i</sub> = 0`.
+
+Shifting a character **forward** means replacing it with the **next** letter in the alphabet (wrapping around so that `'z'` becomes `'a'`). Similarly, shifting a character **backward** means replacing it with the **previous** letter in the alphabet (wrapping around so that `'a'` becomes `'z'`).
+
+Return *the final string after all such shifts to *`s` * are applied* .
+
+### Approach:
+
+**Naive Approach:**
+
+* Directly process each shift, iterating over the substring `[starti, endi]` for each query.
+* This leads to an inefficient `O(n * m)` time complexity (where `n` is the length of the string and `m` is the number of queries).
+
+**Optimized Approach:**
+
+* Use a **difference array** (prefix sum concept) to mark shifts at boundaries.
+* Apply the difference array and then compute cumulative sums to get the final shift for each character in `O(n)` time.
+
+**Steps:**
+
+1. Create a `shift` array of length `n+1` (to handle boundaries cleanly).
+2. For each query `[starti, endi, directioni]`:
+   * If `directioni == 1`, increment `shift[starti]` and decrement `shift[endi+1]`.
+   * If `directioni == 0`, decrement `shift[starti]` and increment `shift[endi+1]`.
+3. Calculate the **prefix sum** of the `shift` array.
+4. Apply the final `shift` values to the string.
+
+### Time Complexity:
+
+* `O(n + m)` (processing shifts + applying prefix sum)
+
+### **Space Complexity:**
+
+* `O(n)` (shift array)

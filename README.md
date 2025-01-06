@@ -816,3 +816,34 @@ Return *the final string after all such shifts to *`s` * are applied* .
 ### **Space Complexity:**
 
 * `O(n)` (shift array)
+
+## Problem: Minimum Number of Operations to Move All Balls to Each Box
+
+**Description:**
+
+You have `n` boxes. You are given a binary string `boxes` of length `n`, where `boxes[i]` is `'0'` if the `i<sup>th</sup>` box is  **empty** , and `'1'` if it contains **one** ball.
+
+In one operation, you can move **one** ball from a box to an adjacent box. Box `i` is adjacent to box `j` if `abs(i - j) == 1`. Note that after doing so, there may be more than one ball in some boxes.
+
+Return an array `answer` of size `n`, where `answer[i]` is the **minimum** number of operations needed to move all the balls to the `i<sup>th</sup>` box.
+
+Each `answer[i]` is calculated considering the **initial** state of the boxes.
+
+### Approach:
+
+1. **Initialize:** Create an `answer` array of size `n` to store the result for each box.
+2. **Left Pass:**
+
+   * Move left to right, accumulating moves and ball count.
+3. **Right Pass:**
+
+   * Move right to left, accumulating moves and ball count.
+4. Return the `answer` array.
+
+### **Time Complexity:**
+
+* O(n)O(n)**O**(**n**) Two passes (left-to-right and right-to-left).
+
+### **Space Complexity:**
+
+* O(n)O(n)**O**(**n**) Forhe `answer` array.

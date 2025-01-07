@@ -866,8 +866,44 @@ A **substring** is a contiguous sequence of characters within a string.
 
 ### Time Complexity:
 
-**O**(**n**2**⋅**m**)*** 
+* **O**(**n**2**⋅**m**)*** 
 
 ### Space Complexity
 
-**O**(**n**⋅**m**)
+* **O**(**n**⋅**m**)
+
+## Problem: Insert Delete GetRandom O(1)
+
+**Description:** 
+
+Implement the `RandomizedSet` class:
+
+* `RandomizedSet()` Initializes the `RandomizedSet` object.
+* `bool insert(int val)` Inserts an item `val` into the set if not present. Returns `true` if the item was not present, `false` otherwise.
+* `bool remove(int val)` Removes an item `val` from the set if present. Returns `true` if the item was present, `false` otherwise.
+* `int getRandom()` Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the **same probability** of being returned.
+
+You must implement the functions of the class such that each function works in **average** `O(1)` time complexity.
+
+### Approach:
+
+* **Insert Operation:**
+  * Checks if `val` exists in the set.
+  * If not, adds it and returns `True`.
+  * Otherwise, returns `False`.
+* **Remove Operation:**
+  * Checks if `val` exists in the set.
+  * If present, removes it and returns `True`.
+  * Otherwise, returns `False`.
+* **getRandom Operation:**
+  * Converts the set into a list and selects a random element using `random.choice`.
+
+### **Time Complexity:**
+
+* **Insert:** O(1)O(1)**O**(**1**) — Set insertion is average-case constant time.
+* **Remove:** O(1)O(1)**O**(**1**) — Set removal is average-case constant time.
+* **getRandom:** O(1)O(1)**O**(**1**) — `random.choice` on a list is constant time.
+
+### **Space Complexity:**
+
+* O(n)O(n)**O**(**n**) — Space is proportional to the number of elements in the set.

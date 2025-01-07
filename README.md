@@ -847,3 +847,27 @@ Each `answer[i]` is calculated considering the **initial** state of the boxes.
 ### **Space Complexity:**
 
 * O(n)O(n)**O**(**n**) Forhe `answer` array.
+
+## Problem: String Matching in an Array
+
+**Description:**
+
+Given an array of string `words`, return all strings in *`words` that is a **substring** of another word* . You can return the answer in  **any order** .
+
+A **substring** is a contiguous sequence of characters within a string.
+
+### Approach:
+
+* Initialize an empty list `result` to store the matching words.
+* Iterate over each word `words[i]`.
+* For each `words[i]`, iterate over the other words `words[j]`.
+* If `words[i]` is a substring of `words[j]` and `i` is not equal to `j`, add `words[i]` to the `result` list and break the inner loop to avoid duplicate entries.
+* Return the `result` list containing all words that are substrings of another word in the array.
+
+### Time Complexity:
+
+**O**(**n**2**⋅**m**)*** 
+
+### Space Complexity
+
+**O**(**n**⋅**m**)

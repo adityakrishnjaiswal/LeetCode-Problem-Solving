@@ -866,7 +866,7 @@ A **substring** is a contiguous sequence of characters within a string.
 
 ### Time Complexity:
 
-* **O**(**n**2**⋅**m**)*** 
+* **O**(**n**2**⋅**m**)***
 
 ### Space Complexity
 
@@ -874,7 +874,7 @@ A **substring** is a contiguous sequence of characters within a string.
 
 ## Problem: Insert Delete GetRandom O(1)
 
-**Description:** 
+**Description:**
 
 Implement the `RandomizedSet` class:
 
@@ -907,3 +907,39 @@ You must implement the functions of the class such that each function works in *
 ### **Space Complexity:**
 
 * O(n)O(n)**O**(**n**) — Space is proportional to the number of elements in the set.
+
+## Problem: Count Prefix and Suffix Pairs I
+
+**Description:**
+
+You are given a **0-indexed** string array `words`.
+
+Let's define a **boolean** function `isPrefixAndSuffix` that takes two strings, `str1` and `str2`:
+
+* `isPrefixAndSuffix(str1, str2)` returns `true` if `str1` is **both** a prefix
+
+  and a suffix
+
+  of `str2`, and `false` otherwise.
+
+For example, `isPrefixAndSuffix("aba", "ababa")` is `true` because `"aba"` is a prefix of `"ababa"` and also a suffix, but `isPrefixAndSuffix("abc", "abcd")` is `false`.
+
+Return  *an integer denoting the **number** of index pairs * `(i, j)`* such that *`i < j`*, and *`isPrefixAndSuffix(words[i], words[j])`* is *`true`*.*
+
+### Approach:
+
+1. Loop through all pairs of indices (i,j)(i, j)**(**i**,**j**)** where i<ji < j**i**<**j**.
+2. For each pair, check if `words[i]` is a prefix and a suffix of `words[j]`.
+   * Prefix: `words[j].startswith(words[i])`
+   * Suffix: `words[j].endswith(words[i])`
+3. Count pairs that satisfy both conditions.
+4. Return the count.
+
+### **Time Complexity:**
+
+* O(n2)O(n^2)**O**(**n**2**)**Two nested loops run over the array.
+* String comparisons (`startswith` and `endswith`) are efficient but still contribute.
+
+### **Space Complexity:**
+
+* O(1)O(1)**O**(**1**) No extra space is used apart from the count variable.

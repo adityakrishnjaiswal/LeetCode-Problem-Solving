@@ -976,5 +976,36 @@ You must write an algorithm that runs in `O(n)` time and without using the divis
 ### Space Complexity:
 
 * **O**(**1**) (excluding the output array)
-
 * No additional arrays, just a couple of scalar variables.
+
+## Problem: Counting Words With a Given Prefix
+
+**Description:** 
+
+Given an array of strings `words` and a string `pref`, the goal is to count the number of strings in the `words` array that contain `pref` as a prefix.
+
+A prefix of a string `s` is any leading contiguous substring of `s`.
+
+### Approach:
+
+To solve this problem, we follow these steps:
+
+1. **Initialize a Counter** : Start with a counter `a` set to `0` to keep track of strings with the given prefix.
+2. **Iterate Through the Words** : Loop through each word in the `words` array.
+3. **Check for Prefix** : For each word, check if `pref` matches the leading substring of the word. This can be done using slicing: `word[:len(pref)]`.
+4. **Increment the Counter** : If the prefix matches, increment the counter.
+5. **Return the Count** : After iterating through all words, return the counter.
+
+### Time Complexity
+
+* **Iterating Through the Array** : The loop iterates over all `n` words in the `words` array.
+* **Prefix Comparison** : For each word, checking the prefix takes O(m)O(m)**O**(**m**), where mm**m** is the length of `pref`.
+
+Overall, the time complexity is  **O(n * m)** , where:
+
+* nn**n** is the number of words in the array.
+* mm**m** is the length of the prefix.
+
+### Space Complexity
+
+The solution uses a constant amount of extra space, as no additional data structures are used. Thus, the space complexity is  **O(1)** .

@@ -1009,3 +1009,38 @@ Overall, the time complexity is  **O(n * m)** , where:
 ### Space Complexity
 
 The solution uses a constant amount of extra space, as no additional data structures are used. Thus, the space complexity is  **O(1)** .
+
+## Problem: Gas Station
+
+**Description:**
+
+There are `n` gas stations along a circular route, where the amount of gas at the `i<sup>th</sup>` station is `gas[i]`.
+
+You have a car with an unlimited gas tank and it costs `cost[i]` of gas to travel from the `i<sup>th</sup>` station to its next `(i + 1)<sup>th</sup>` station. You begin the journey with an empty tank at one of the gas stations.
+
+Given two integer arrays `gas` and `cost`, return *the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return* `-1`. If there exists a solution, it is **guaranteed** to be  **unique** .
+
+### Approach:
+
+**Observation** :
+
+* For a successful trip, the total gas in the circuit must be greater than or equal to the total cost:
+  If ∑(gas)<∑(cost),no solution exists.\text{If } \sum(\text{gas}) < \sum(\text{cost}), \text{no solution exists.}**If **∑**(**gas**)**<**∑**(**cost**)**,**no solution exists.
+* If a car runs out of gas at station ii**i**, any station between the previous start point and ii**i** cannot be the solution, so the search can restart from i+1i+1**i**+**1**.
+
+**Algorithm** :
+
+* Calculate the total gas and total cost.
+* If the total gas is less than the total cost, return `-1`.
+* Otherwise, iterate through the stations and track the remaining gas:
+  * If the gas tank goes negative at station ii**i**, restart the journey from station i+1i+1**i**+**1**.
+* Return the starting station.
+
+### Time Complexity
+
+* Iterating through the stations: O(n)O(n)**O**(**n**).
+* Total complexity: O(n)O(n)**O**(**n**).
+
+### Space Complexity
+
+* The solution uses only constant extra space: O(1)O(1)**O**(**1**).

@@ -980,7 +980,7 @@ You must write an algorithm that runs in `O(n)` time and without using the divis
 
 ## Problem: Counting Words With a Given Prefix
 
-**Description:** 
+**Description:**
 
 Given an array of strings `words` and a string `pref`, the goal is to count the number of strings in the `words` array that contain `pref` as a prefix.
 
@@ -1044,3 +1044,39 @@ Given two integer arrays `gas` and `cost`, return *the starting gas station's in
 ### Space Complexity
 
 * The solution uses only constant extra space: O(1)O(1)**O**(**1**).
+
+## Problem: Word Subsets
+
+**Description:**
+
+You are given two string arrays `words1` and `words2`.
+
+A string `b` is a **subset** of string `a` if every letter in `b` occurs in `a` including multiplicity.
+
+* For example, `"wrr"` is a subset of `"warrior"` but is not a subset of `"world"`.
+
+A string `a` from `words1` is **universal** if for every string `b` in `words2`, `b` is a subset of `a`.
+
+Return an array of all the **universal** strings in `words1`. You may return the answer in **any order**
+
+### Approach:
+
+The main goal is to check whether each word in `words1` contains all the characters needed by every word in `words2` with the correct frequency. Instead of checking for each word in `words2` within each word in `words1` repeatedly, we can approach the problem as follows:
+
+1. **Character Frequency Count for `words2`:**
+   First, we need to figure out the frequency of each character in `words2`. For each word in `words2`, we determine the maximum frequency of each character required.
+2. **Checking Superset Condition:**
+   For each word in `words1`, we check whether it contains the required characters from `words2` with the necessary frequency.
+
+### Time Complexity:
+
+ **O(N * M + P * K)** , where:
+
+* `N` = number of words in `words2`,
+* `M` = average length of words in `words2`,
+* `P` = number of words in `words1`,
+* `K` = average length of words in `words1`.
+
+### Space Complexity:
+
+ **O(P)** , where `P` is the number of words in `words1`.

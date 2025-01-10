@@ -1079,4 +1079,38 @@ The main goal is to check whether each word in `words1` contains all the charact
 
 ### Space Complexity:
 
- **O(P)** , where `P` is the number of words in `words1`.
+*  **O(P)** , where `P` is the number of words in `words1`.
+
+## Problem: Candy
+
+**Description:** 
+
+There are `n` children standing in a line. Each child is assigned a rating value given in the integer array `ratings`.
+
+You are giving candies to these children subjected to the following requirements:
+
+* Each child must have at least one candy.
+* Children with a higher rating get more candies than their neighbors.
+
+Return  *the minimum number of candies you need to have to distribute the candies to the children* .
+
+### Approach:
+
+We can solve this problem in a **greedy** manner using two passes over the ratings array:
+
+1. **First Pass (Left to Right):**
+   * Start by assigning 1 candy to each child.
+   * Traverse the array from left to right, and for each child, if their rating is higher than the previous child's rating, they should receive one more candy than the previous child.
+2. **Second Pass (Right to Left):**
+   * Traverse the array from right to left.
+   * For each child, if their rating is higher than the next child's rating, update the candy count to ensure the child receives more candies than the next child (but only if it's greater than the previously assigned candies to avoid overriding the first pass).
+
+After both passes, the total number of candies will be the sum of the candies assigned to each child.
+
+### **Time Complexity:**
+
+* The solution involves two passes through the array, making the time complexity  **O(n)** , where `n` is the number of children.
+
+### **Space Complexity:**
+
+* We use an additional array `candies` to store the candy count for each child, so the space complexity is  **O(n)** .

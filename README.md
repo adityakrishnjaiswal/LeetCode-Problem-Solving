@@ -1079,11 +1079,11 @@ The main goal is to check whether each word in `words1` contains all the charact
 
 ### Space Complexity:
 
-*  **O(P)** , where `P` is the number of words in `words1`.
+* **O(P)** , where `P` is the number of words in `words1`.
 
 ## Problem: Candy
 
-**Description:** 
+**Description:**
 
 There are `n` children standing in a line. Each child is assigned a rating value given in the integer array `ratings`.
 
@@ -1114,3 +1114,24 @@ After both passes, the total number of candies will be the sum of the candies as
 ### **Space Complexity:**
 
 * We use an additional array `candies` to store the candy count for each child, so the space complexity is  **O(n)** .
+
+## Construct K Palindrome Strings
+
+**Description:**
+
+Given a string `s` and an integer `k`, return `true` *if you can use all the characters in *`s`* to construct *`k`* palindrome strings or *`false` * otherwise* .
+
+### Approach:
+
+* **Count odd frequencies** directly while iterating through the string.
+* **Early exit** : If at any point, the number of odd frequencies exceeds `k`, we can return `false` immediately.
+
+* **Simplified logic** : No need to store the full frequency count of all characters; we only care about how many characters have an odd frequency.
+
+### **Time Complexity**:
+
+O(n)
+
+### **Space Complexity**:
+
+O(m), where `m` is the number of unique characters in the string

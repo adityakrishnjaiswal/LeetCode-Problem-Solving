@@ -1135,3 +1135,25 @@ O(n)
 ### **Space Complexity**:
 
 O(m), where `m` is the number of unique characters in the string
+
+## Problem: Trapping Rain Water
+
+**Description:** 
+
+Given `n` non-negative integers representing an elevation map where the width of each bar is `1`, compute how much water it can trap after raining.
+
+### Approach:
+
+**Key Observations:**
+
+1. Water trapped above a bar depends on the **minimum** of the tallest bars to its **left** and  **right** :
+   * `water[i] = min(max_left[i], max_right[i]) - height[i]`
+2. The challenge is efficiently calculating `max_left` and `max_right` for every bar.
+
+### Time Complexity:
+
+* The array is traversed once using two pointers, so the time complexity is  **O(n)** .
+
+### Space Complexity:
+
+* We use a constant amount of extra space, so the space complexity is **O(1).**

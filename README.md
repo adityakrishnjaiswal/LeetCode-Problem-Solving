@@ -1125,7 +1125,6 @@ Given a string `s` and an integer `k`, return `true` *if you can use all the cha
 
 * **Count odd frequencies** directly while iterating through the string.
 * **Early exit** : If at any point, the number of odd frequencies exceeds `k`, we can return `false` immediately.
-
 * **Simplified logic** : No need to store the full frequency count of all characters; we only care about how many characters have an odd frequency.
 
 ### **Time Complexity**:
@@ -1138,7 +1137,7 @@ O(m), where `m` is the number of unique characters in the string
 
 ## Problem: Trapping Rain Water
 
-**Description:** 
+**Description:**
 
 Given `n` non-negative integers representing an elevation map where the width of each bar is `1`, compute how much water it can trap after raining.
 
@@ -1157,3 +1156,46 @@ Given `n` non-negative integers representing an elevation map where the width of
 ### Space Complexity:
 
 * We use a constant amount of extra space, so the space complexity is **O(1).**
+
+## Problem: Check if a Parentheses String Can Be Valid
+
+**Description:**
+
+A parentheses string is a **non-empty** string consisting only of `'('` and `')'`. It is valid if **any** of the following conditions is  **true** :
+
+* It is `()`.
+* It can be written as `AB` (`A` concatenated with `B`), where `A` and `B` are valid parentheses strings.
+* It can be written as `(A)`, where `A` is a valid parentheses string.
+
+You are given a parentheses string `s` and a string `locked`, both of length `n`. `locked` is a binary string consisting only of `'0'`s and `'1'`s. For **each** index `i` of `locked`,
+
+* If `locked[i]` is `'1'`, you **cannot** change `s[i]`.
+* But if `locked[i]` is `'0'`, you **can** change `s[i]` to either `'('` or `')'`.
+
+Return `true`  *if you can make `s` a valid parentheses string* . Otherwise, return `false`.
+
+### Approach:
+
+* **Track Imbalance from Left to Right:**
+
+  * Simulate the parentheses validation from left to right.
+  * Use a counter open\text{open}**open** to track the net number of open parentheses that need closing.
+  * Increment open\text{open}**open** for '(' or when you treat a modifiable '0' as '('.
+  * Decrement open\text{open}**open** for ')'.
+  * If open\text{open}**open** ever goes negative, it means there's an unmatched ')' which cannot be resolved, so return `False`.
+* **Track Imbalance from Right to Left:**
+
+  * Perform a similar pass from right to left, but in reverse, treating unmatched '(' as invalid.
+  * Use a counter close\text{close}**close** to track the number of ')' that are needed to balance the string.
+  * If close\text{close}**close** goes negative during this pass, return `False`.
+* **Final Check:**
+
+  * If both passes are valid, return `True`, since it indicates that we can resolve all mismatched parentheses.
+
+### Time Complexity:
+
+* **O**(**n**) because we make two linear passes over the string.
+
+### Space Complexity:
+
+* **O**(**1**) since we use constant extra space.

@@ -1287,4 +1287,47 @@ Thus, the overall time complexity is **O(n)**
 
 Thus, the overall space complexity is  **O(k)** , where `k` is the number of distinct characters in the string.
 
----
+## Problem: Integer to Roman
+
+**Description:**
+
+Seven different symbols represent Roman numerals with the following values:
+
+| Symbol | Value |
+| ------ | ----- |
+| I      | 1     |
+| V      | 5     |
+| X      | 10    |
+| L      | 50    |
+| C      | 100   |
+| D      | 500   |
+| M      | 1000  |
+
+Roman numerals are formed by appending the conversions of decimal place values from highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:
+
+* If the value does not start with 4 or 9, select the symbol of the maximal value that can be subtracted from the input, append that symbol to the result, subtract its value, and convert the remainder to a Roman numeral.
+* If the value starts with 4 or 9 use the **subtractive form** representing one symbol subtracted from the following symbol, for example, 4 is 1 (`I`) less than 5 (`V`): `IV` and 9 is 1 (`I`) less than 10 (`X`): `IX`. Only the following subtractive forms are used: 4 (`IV`), 9 (`IX`), 40 (`XL`), 90 (`XC`), 400 (`CD`) and 900 (`CM`).
+* Only powers of 10 (`I`, `X`, `C`, `M`) can be appended consecutively at most 3 times to represent multiples of 10. You cannot append 5 (`V`), 50 (`L`), or 500 (`D`) multiple times. If you need to append a symbol 4 times use the  **subtractive form** .
+
+Given an integer, convert it to a Roman numeral.
+
+### Approach:
+
+* **Create a Mapping for Roman Numerals** :
+  We need to have a list of tuples, where each tuple consists of a decimal value and its corresponding Roman numeral symbol. These tuples should be ordered from largest to smallest values.
+* **Iterate Through the List** :
+  We will iterate through the list of Roman numeral values and check which one is the largest that can be subtracted from the given integer (the input number). We subtract this value from the integer, and append the corresponding Roman numeral to the result string. This process continues until the integer becomes zero.
+* **Handling Subtractive Notation** :
+  The subtractive notation (e.g., IV for 4, IX for 9, XL for 40, etc.) should naturally be handled because we include these subtractive pairs in the Roman numeral mapping.
+
+### Time Complexity:
+
+* The loop iterates through the list of Roman numeral values, which has a fixed size (13 elements).
+* In each iteration, we perform constant time operations (subtracting values and appending symbols to the result).
+
+Thus, the overall time complexity is  **O(1)** , since the length of the list and the number of operations per iteration are constant.
+
+### Space Complexity:
+
+* The space complexity is **O(1)** for the algorithm itself, as the space used for storing the Roman numeral symbols is fixed and independent of the input size.
+* The space for the result string is proportional to the number of Roman numeral symbols needed, but this is still considered **O(1)** in terms of space complexity because the input size is limited to a fixed range (typically up to 3999 for Roman numerals).

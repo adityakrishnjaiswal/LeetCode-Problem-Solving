@@ -1248,3 +1248,43 @@ Here’s the Python implementation:
 ### Space Complexity:
 
 * O(1)O(1)**O**(**1**), as we use a fixed dictionary for mappings and a few variables for computation.
+
+## Problem: Minimum Length of String After Operations
+
+**Description:**
+
+You are given a string `s`.
+
+You can perform the following process on `s` **any** number of times:
+
+* Choose an index `i` in the string such that there is **at least** one character to the left of index `i` that is equal to `s[i]`, and **at least** one character to the right that is also equal to `s[i]`.
+* Delete the **closest** character to the **left** of index `i` that is equal to `s[i]`.
+* Delete the **closest** character to the **right** of index `i` that is equal to `s[i]`.
+
+Return the **minimum** length of the final string `s` that you can achieve.
+
+### Approach:
+
+* **Count character frequencies:**
+  First, count the frequency of each character in the given string using the `Counter` from Python's `collections` module. This will allow us to track how many times each character appears in the string.
+* **Process each character frequency:**
+  For each character in the string, we need to determine how many characters can be removed (pairs of characters). The condition for removing a character is that there must be one occurrence to the left and one occurrence to the right of any selected index.
+  * If a character appears an even number of times, we can remove pairs of characters. This will effectively reduce its count to zero.
+  * If a character appears an odd number of times, we will be left with one character after performing the operation, which can't be removed.
+* **Return the final length of the string:**
+  After removing all possible characters, the final length of the string will be the sum of the leftover characters (those that couldn't be removed in pairs). This can be computed by checking the parity (odd or even) of the frequency of each character.
+
+### Time Complexity:
+
+* The `Counter` object is built in **O(n)** time, where `n` is the length of the input string `s`.
+* Iterating over the values of the `Counter` takes **O(k)** time, where `k` is the number of distinct characters in the string. In the worst case, `k` can be as large as `n` (when all characters are unique).
+
+Thus, the overall time complexity is **O(n)**
+
+### Space Complexity:
+
+* The space complexity is determined by the storage required for the `Counter` object. The `Counter` stores the frequency of each distinct character, which requires **O(k)** space, where `k` is the number of distinct characters in the string. In the worst case, `k` can be equal to `n` (when all characters are unique).
+
+Thus, the overall space complexity is  **O(k)** , where `k` is the number of distinct characters in the string.
+
+---

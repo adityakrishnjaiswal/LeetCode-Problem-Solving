@@ -1331,3 +1331,31 @@ Thus, the overall time complexity is  **O(1)** , since the length of the list an
 
 * The space complexity is **O(1)** for the algorithm itself, as the space used for storing the Roman numeral symbols is fixed and independent of the input size.
 * The space for the result string is proportional to the number of Roman numeral symbols needed, but this is still considered **O(1)** in terms of space complexity because the input size is limited to a fixed range (typically up to 3999 for Roman numerals).
+
+## Problem: Find the Prefix Common Array of Two Arrays
+
+**Description:**
+
+You are given two **0-indexed **integer permutations `A` and `B` of length `n`.
+
+A **prefix common array** of `A` and `B` is an array `C` such that `C[i]` is equal to the count of numbers that are present at or before the index `i` in both `A` and `B`.
+
+Return *the **prefix common array** of *`A`* and *`B`.
+
+A sequence of `n` integers is called a **permutation** if it contains all integers from `1` to `n` exactly once.
+
+### Approach:
+
+* Use sets to keep track of elements seen so far in AA**A** and BB**B**.
+* For each index ii**i**:
+  * Add A[i]A[i]**A**[**i**] and B[i]B[i]**B**[**i**] to their respective sets.
+  * Compute the intersection of the two sets to find common elements.
+  * Update C[i]C[i]**C**[**i**] with the size of the intersection.
+
+### Time Complexity:
+
+**O**(**n**⋅**lo**g**(**n**))**
+
+### Space Complexity:
+
+**O**(**n**)**(for the output array **C**)**.

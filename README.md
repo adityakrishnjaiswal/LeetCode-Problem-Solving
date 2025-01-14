@@ -1359,3 +1359,35 @@ A sequence of `n` integers is called a **permutation** if it contains all intege
 ### Space Complexity:
 
 **O**(**n**)**(for the output array **C**)**.
+
+
+## Problem: Length of Last Word
+
+**Description:**
+
+Given a string `s` consisting of words and spaces, return the length of the last word in the string. A word is defined as a maximal substring consisting of non-space characters only.
+
+### Approach:
+
+* **Split the String** : Use Python's `split()` method to split the string into words by spaces. This removes extra spaces automatically.
+* **Find Last Word** : Retrieve the last word from the resulting list of words using its index (`-1`).
+* **Return Length** : Calculate the length of the last word using the `len()` function and return it.
+
+### Time Complexity:
+
+* **Splitting the String:**
+  The `split()` function processes the entire string of length `n`.
+  **Time Complexity = O(n)**
+* **Accessing Last Word:**
+  Accessing the last word is constant time.
+  **Time Complexity = O(1)**
+* **Calculating Length of the Last Word:**
+  The length of the last word depends on the word size, which is negligible compared to the entire string.
+  **Time Complexity = O(k)** (where `k` is the length of the last word).
+
+**Overall Time Complexity = O(n)**
+
+### Space Complexity:
+
+* The `split()` function creates a list of words, consuming space proportional to the number of words.
+  **Space Complexity = O(n)**

@@ -1414,4 +1414,38 @@ If there is no common prefix, return an empty string `""`.
 
 ### **Space Complexity:**
 
-*  `O(1)` since we are only using a constant amount of extra space aside from the input.
+* `O(1)` since we are only using a constant amount of extra space aside from the input.
+
+## Problem: Minimize XOR
+
+---
+
+**Description:**
+
+Given two positive integers `num1` and `num2`, find the positive integer `x` such that:
+
+* `x` has the same number of set bits as `num2`, and
+* The value `x XOR num1` is  **minimal** .
+
+Note that `XOR` is the bitwise XOR operation.
+
+Return *the integer *`x`. The test cases are generated such that `x` is  **uniquely determined** .
+
+The number of **set bits** of an integer is the number of `1`'s in its binary representation.
+
+### Approach:
+
+1. **Count Set Bits of `num2`:** Calculate how many set bits (1's) are in `num2`.
+2. **Greedy Strategy:**
+   * Initialize `x` to 0 and iterate over `num1`'s bits (from MSB to LSB).
+   * Set bits in `x` where `num1` has 1s, if more set bits are needed.
+3. **Fill Remaining Bits:** If more set bits are needed, set the lowest available bits in `x`.
+4. **Return `x`:** After setting the required number of bits.
+
+### Time Complexity:
+
+* **O(32)** : We iterate over 32 bits, making the time complexity effectively constant (`O(1)`).
+
+### Space Complexity:
+
+* **O(1)** : We use only a fixed amount of space for variables like `x` and `set_bits`.

@@ -1360,7 +1360,6 @@ A sequence of `n` integers is called a **permutation** if it contains all intege
 
 **O**(**n**)**(for the output array **C**)**.
 
-
 ## Problem: Length of Last Word
 
 **Description:**
@@ -1391,3 +1390,28 @@ Given a string `s` consisting of words and spaces, return the length of the last
 
 * The `split()` function creates a list of words, consuming space proportional to the number of words.
   **Space Complexity = O(n)**
+
+## Problem: Longest Common Prefix
+
+---
+
+**Description:**
+
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string `""`.
+
+### Approach:
+
+* We compare characters column by column. For each column (i.e., each character position), we check if all strings have the same character at that position.
+* If we find any mismatch, we return the prefix up to the previous column.
+* If all strings are the same up to a certain column, we continue checking the next column.
+* If one of the strings is exhausted (i.e., shorter than the others), the longest common prefix is the part of the strings we've compared up to that point.
+
+### Time Complexity:
+
+* `O(S)`, where `S` is the total number of characters across all strings. In the worst case, we may need to check every character in all strings.
+
+### **Space Complexity:**
+
+*  `O(1)` since we are only using a constant amount of extra space aside from the input.
